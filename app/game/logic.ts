@@ -53,7 +53,7 @@ export const makeMove = (
   if (state.winner || state.board[row][col]) return state;
 
   const newBoard = state.board.map((r) => [...r]);
-  newBoard[row][col] = state.players[state.currentTurn].char;
+  newBoard[row][col] = state.players![state.currentTurn].char;
 
   const winningLine = getWinningCells(newBoard, row, col);
 
@@ -62,8 +62,8 @@ export const makeMove = (
     players: state.players,
     currentTurn: winningLine
       ? state.currentTurn
-      : nextTurn(state.currentTurn, state.players),
-    winner: winningLine ? state.players[state.currentTurn] : null,
+      : nextTurn(state.currentTurn, state.players!),
+    winner: winningLine ? state.players![state.currentTurn] : null,
     winningCells: winningLine ?? [],
   };
 };

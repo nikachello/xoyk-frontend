@@ -9,7 +9,7 @@ export const useGame = () => {
 
   const createRoom = async () => {
     if (!currentPlayer) return;
-    const res = await fetch("http://localhost:4000/rooms", {
+    const res = await fetch("https://xoyk-backend.onrender.com/rooms", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ player: currentPlayer }),
@@ -21,11 +21,14 @@ export const useGame = () => {
 
   const joinRoom = async (id: string) => {
     if (!currentPlayer) return;
-    const res = await fetch(`http://localhost:4000/rooms/join/${id}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ player: currentPlayer }),
-    });
+    const res = await fetch(
+      `https://xoyk-backend.onrender.com/rooms/join/${id}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ player: currentPlayer }),
+      }
+    );
 
     const data = await res.json();
     setRoomId(data.roomId);
