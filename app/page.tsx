@@ -153,10 +153,8 @@ export default function Home() {
     }
 
     socket.emit("makeMove", {
-      roomId,
       row,
       col,
-      playerId: currentPlayer.id,
     });
   };
 
